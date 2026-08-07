@@ -1,0 +1,1191 @@
+/* =====================================================
+   DJ YEN EL INCONTROLABLE
+   DISEÑO PREMIUM
+   ===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 50% 15%, #071b52 0%, #020611 35%, #000 75%);
+    color: white;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* =====================================================
+   FONDO
+   ===================================================== */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -2;
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(0, 110, 255, .20), transparent 25%),
+        radial-gradient(circle at 85% 35%, rgba(0, 110, 255, .18), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(0, 60, 255, .15), transparent 30%);
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px);
+
+    background-size: 80px 80px;
+    opacity: .12;
+}
+
+/* =====================================================
+   RAYOS DECORATIVOS
+   ===================================================== */
+
+.rayos {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.rayos::before,
+.rayos::after {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 100%;
+    background: #008cff;
+
+    box-shadow:
+        0 0 10px #008cff,
+        0 0 25px #006eff,
+        0 0 50px #006eff;
+
+    opacity: .25;
+}
+
+.rayos::before {
+    left: 8%;
+    transform: rotate(18deg);
+}
+
+.rayos::after {
+    right: 8%;
+    transform: rotate(-18deg);
+}
+
+/* =====================================================
+   HERO
+   ===================================================== */
+
+.hero {
+    width: 100%;
+    min-height: 650px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px 20px;
+
+    position: relative;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(0, 80, 255, .30),
+            transparent 65%
+        );
+}
+
+/* brillo detrás del logo */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 70%;
+    height: 70%;
+
+    background: #006eff;
+
+    filter: blur(130px);
+
+    opacity: .18;
+
+    animation: brillo 4s ease-in-out infinite alternate;
+}
+
+@keyframes brillo {
+
+    from {
+        transform: scale(.8);
+        opacity: .12;
+    }
+
+    to {
+        transform: scale(1.1);
+        opacity: .25;
+    }
+}
+
+.logo {
+    width: min(950px, 95%);
+    max-height: 600px;
+    object-fit: contain;
+
+    position: relative;
+    z-index: 2;
+
+    filter:
+        drop-shadow(0 0 8px #008cff)
+        drop-shadow(0 0 25px #006eff)
+        drop-shadow(0 0 60px rgba(0, 110, 255, .7));
+
+    animation: logoEntrada 1.5s ease forwards,
+               logoFlotando 5s ease-in-out infinite 1.5s;
+}
+
+@keyframes logoEntrada {
+
+    from {
+        opacity: 0;
+        transform: scale(.7) translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes logoFlotando {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* =====================================================
+   SLOGAN
+   ===================================================== */
+
+.slogan {
+    text-align: center;
+
+    padding: 25px 15px 45px;
+
+    border-bottom: 1px solid rgba(0, 140, 255, .35);
+}
+
+.slogan h2 {
+    font-size: clamp(12px, 2vw, 21px);
+
+    letter-spacing: 3px;
+
+    color: white;
+
+    text-shadow:
+        0 0 5px white,
+        0 0 15px #008cff;
+}
+
+.slogan h2::before {
+    content: "⚡ ";
+    color: #9cff00;
+}
+
+.slogan h2::after {
+    content: " ⚡";
+    color: #9cff00;
+}
+
+/* =====================================================
+   TITULOS
+   ===================================================== */
+
+.servicios h1,
+.redes h1,
+.galeria h1 {
+
+    text-align: center;
+
+    font-size: clamp(30px, 5vw, 55px);
+
+    font-style: italic;
+
+    color: #12aaff;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 40px;
+
+    text-shadow:
+        0 0 5px #008cff,
+        0 0 15px #006eff,
+        0 0 30px rgba(0, 110, 255, .8);
+}
+
+/* =====================================================
+   SERVICIOS
+   ===================================================== */
+
+.servicios {
+
+    padding: 70px 5%;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(0, 20, 60, .35),
+            transparent
+        );
+}
+
+.contenedor-servicios {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 18px;
+}
+
+.card {
+
+    min-height: 160px;
+
+    padding: 25px 10px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    border: 2px solid #008cff;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 100, 255, .15),
+            rgba(0, 0, 0, .8)
+        );
+
+    clip-path: polygon(
+        12% 0,
+        88% 0,
+        100% 18%,
+        100% 82%,
+        88% 100%,
+        12% 100%,
+        0 82%,
+        0 18%
+    );
+
+    box-shadow:
+        inset 0 0 25px rgba(0, 110, 255, .15),
+        0 0 10px rgba(0, 110, 255, .4);
+
+    transition: .35s ease;
+
+    position: relative;
+}
+
+.card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 4px;
+
+    border: 1px solid rgba(0, 150, 255, .25);
+
+    pointer-events: none;
+}
+
+.card:hover {
+
+    transform: translateY(-12px) scale(1.04);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 120, 255, .35),
+            rgba(0, 0, 0, .85)
+        );
+
+    box-shadow:
+        0 0 10px #008cff,
+        0 0 25px #006eff,
+        0 0 50px rgba(0, 110, 255, .5);
+}
+
+.card i {
+
+    font-size: 42px;
+
+    color: #20aaff;
+
+    margin-bottom: 18px;
+
+    text-shadow:
+        0 0 8px #008cff,
+        0 0 20px #006eff;
+
+    transition: .3s;
+}
+
+.card:hover i {
+
+    transform: scale(1.15);
+
+    color: white;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 25px #008cff;
+}
+
+.card h3 {
+
+    font-size: 13px;
+
+    letter-spacing: 1px;
+
+    color: white;
+}
+
+/* =====================================================
+   REDES SOCIALES
+   ===================================================== */
+
+.redes {
+
+    padding: 70px 5%;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(0, 80, 255, .12),
+            transparent 70%
+        );
+}
+
+.botones {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 20px;
+}
+
+.boton {
+
+    min-height: 145px;
+
+    text-decoration: none;
+
+    color: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    border: 2px solid #008cff;
+
+    background: rgba(0, 5, 20, .75);
+
+    clip-path: polygon(
+        25% 0,
+        75% 0,
+        100% 25%,
+        100% 75%,
+        75% 100%,
+        25% 100%,
+        0 75%,
+        0 25%
+    );
+
+    box-shadow:
+        inset 0 0 20px rgba(0, 100, 255, .15),
+        0 0 12px rgba(0, 100, 255, .4);
+
+    transition: .35s;
+}
+
+.boton i {
+
+    font-size: 42px;
+
+    text-shadow:
+        0 0 10px #008cff;
+
+    transition: .3s;
+}
+
+.boton span {
+
+    text-transform: uppercase;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.boton:hover {
+
+    transform: translateY(-10px) scale(1.05);
+
+    border-color: white;
+
+    box-shadow:
+        0 0 10px #008cff,
+        0 0 30px #006eff,
+        0 0 60px rgba(0, 110, 255, .5);
+}
+
+.boton:hover i {
+
+    transform: scale(1.15);
+}
+
+/* =====================================================
+   COLORES REDES
+   ===================================================== */
+
+.whatsapp i {
+    color: #25D366;
+}
+
+.facebook i {
+    color: #1877F2;
+}
+
+.instagram i {
+    color: #E1306C;
+}
+
+.tiktok i {
+    color: white;
+}
+
+.youtube i {
+    color: #FF0000;
+}
+
+.telefono i {
+    color: #00aaff;
+}
+
+/* =====================================================
+   GALERÍA
+   ===================================================== */
+
+.galeria {
+
+    padding: 70px 4% 80px;
+
+    overflow: hidden;
+}
+
+.slider {
+
+    max-width: 1250px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.slider img {
+
+    width: 100%;
+
+    height: 230px;
+
+    object-fit: cover;
+
+    border: 2px solid #008cff;
+
+    padding: 4px;
+
+    background: #000;
+
+    clip-path: polygon(
+        8% 0,
+        92% 0,
+        100% 10%,
+        100% 90%,
+        92% 100%,
+        8% 100%,
+        0 90%,
+        0 10%
+    );
+
+    box-shadow:
+        0 0 10px #008cff,
+        0 0 25px rgba(0, 100, 255, .4);
+
+    transition: .4s;
+}
+
+.slider img:hover {
+
+    transform:
+        scale(1.06)
+        translateY(-8px);
+
+    box-shadow:
+        0 0 15px #008cff,
+        0 0 40px #006eff,
+        0 0 70px rgba(0, 110, 255, .6);
+
+    z-index: 2;
+}
+
+/* =====================================================
+   SECCIÓN FINAL
+   ===================================================== */
+
+.final {
+
+    padding: 70px 20px 100px;
+
+    text-align: center;
+
+    position: relative;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(0, 100, 255, .18),
+            transparent 65%
+        );
+}
+
+.final h1 {
+
+    max-width: 850px;
+
+    margin: auto auto 35px;
+
+    font-size: clamp(25px, 5vw, 50px);
+
+    font-style: italic;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 8px white,
+        0 0 20px #008cff;
+}
+
+.final h1::first-line {
+
+    color: white;
+}
+
+.btn-whatsapp {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    min-width: 280px;
+
+    padding: 20px 30px;
+
+    text-decoration: none;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    border: 2px solid #9cff00;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(90, 130, 0, .3),
+            rgba(0, 0, 0, .9)
+        );
+
+    clip-path: polygon(
+        10% 0,
+        90% 0,
+        100% 25%,
+        100% 75%,
+        90% 100%,
+        10% 100%,
+        0 75%,
+        0 25%
+    );
+
+    box-shadow:
+        0 0 10px #9cff00,
+        0 0 25px rgba(156, 255, 0, .5);
+
+    transition: .35s;
+}
+
+.btn-whatsapp i {
+
+    color: #25D366;
+
+    font-size: 35px;
+
+    text-shadow:
+        0 0 10px #25D366;
+}
+
+.btn-whatsapp:hover {
+
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 15px #9cff00,
+        0 0 40px #9cff00,
+        0 0 70px rgba(156, 255, 0, .4);
+}
+
+/* =====================================================
+   ANIMACIÓN DE ENTRADA
+   ===================================================== */
+
+.card,
+.boton,
+.slider img {
+
+    animation: aparecer .8s ease both;
+}
+
+@keyframes aparecer {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(.95);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+/* =====================================================
+   RESPONSIVE - TABLET
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .hero {
+        min-height: 520px;
+    }
+
+    .contenedor-servicios {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .botones {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+
+    .slider {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+/* =====================================================
+   RESPONSIVE - CELULAR
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    .hero {
+
+        min-height: 400px;
+
+        padding:
+            20px 10px;
+    }
+
+    .logo {
+
+        width: 100%;
+
+        max-height: 390px;
+    }
+
+    .slogan {
+
+        padding:
+            20px 10px 30px;
+    }
+
+    .slogan h2 {
+
+        font-size: 11px;
+
+        line-height: 1.8;
+
+        letter-spacing: 1px;
+    }
+
+    .servicios,
+    .redes,
+    .galeria {
+
+        padding:
+            50px 15px;
+    }
+
+    .servicios h1,
+    .redes h1,
+    .galeria h1 {
+
+        margin-bottom: 30px;
+
+        font-size: 32px;
+    }
+
+    .contenedor-servicios {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 12px;
+    }
+
+    .card {
+
+        min-height: 130px;
+
+        padding: 15px 5px;
+    }
+
+    .card i {
+
+        font-size: 32px;
+
+        margin-bottom: 10px;
+    }
+
+    .card h3 {
+
+        font-size: 10px;
+    }
+
+    .botones {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 10px;
+    }
+
+    .boton {
+
+        min-height: 115px;
+
+        gap: 8px;
+    }
+
+    .boton i {
+
+        font-size: 30px;
+    }
+
+    .boton span {
+
+        font-size: 8px;
+
+        text-align: center;
+    }
+
+    .slider {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 10px;
+    }
+
+    .slider img {
+
+        height: 140px;
+    }
+
+    .final {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .final h1 {
+
+        font-size: 28px;
+
+        line-height: 1.3;
+    }
+
+    .btn-whatsapp {
+
+        min-width: 250px;
+
+        padding: 17px 20px;
+
+        font-size: 13px;
+    }
+}
+
+/* =====================================================
+   CELULARES MUY PEQUEÑOS
+   ===================================================== */
+
+@media (max-width: 380px) {
+
+    .botones {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .contenedor-servicios {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .slider {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .slider img {
+
+        height: 190px;
+    }
+}
+
+/* =====================================================
+   CONTROLES DEL CARRUSEL
+   ===================================================== */
+
+.carrusel-anterior,
+.carrusel-siguiente {
+
+    position: absolute;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 50%;
+
+    border: 2px solid #008cff;
+
+    background: rgba(0, 5, 20, .85);
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    box-shadow:
+        0 0 10px #008cff,
+        0 0 25px rgba(0,110,255,.7);
+
+    transition: .3s;
+}
+
+.carrusel-anterior {
+    left: 15px;
+}
+
+.carrusel-siguiente {
+    right: 15px;
+}
+
+.carrusel-anterior:hover,
+.carrusel-siguiente:hover {
+
+    background: #006eff;
+
+    box-shadow:
+        0 0 15px #008cff,
+        0 0 35px #006eff;
+
+    transform:
+        translateY(-50%)
+        scale(1.15);
+}
+
+
+/* =====================================================
+   INDICADORES
+   ===================================================== */
+
+.indicadores {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.punto {
+
+    width: 12px;
+
+    height: 12px;
+
+    border-radius: 50%;
+
+    border: 2px solid #008cff;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 5px #008cff;
+
+    transition: .3s;
+}
+
+.punto:hover {
+
+    transform: scale(1.3);
+}
+
+.punto.activo {
+
+    background: #008cff;
+
+    box-shadow:
+        0 0 8px #008cff,
+        0 0 20px #006eff;
+}
+
+
+/* =====================================================
+   ANIMACIÓN AL HACER SCROLL
+   ===================================================== */
+
+.oculto {
+
+    opacity: 0;
+
+    transform:
+        translateY(50px)
+        scale(.95);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.mostrar {
+
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =====================================================
+   EFECTO RIPPLE
+   ===================================================== */
+
+.boton,
+.btn-whatsapp {
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.ripple {
+
+    position: absolute;
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.6);
+
+    transform:
+        translate(-50%, -50%)
+        scale(0);
+
+    animation:
+        rippleAnim .6s linear;
+
+    pointer-events: none;
+}
+
+@keyframes rippleAnim {
+
+    to {
+
+        transform:
+            translate(-50%, -50%)
+            scale(20);
+
+        opacity: 0;
+    }
+}
+
+
+/* =====================================================
+   PULSO WHATSAPP
+   ===================================================== */
+
+@keyframes pulsoWhatsApp {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* =====================================================
+   GALERÍA EN CELULAR
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    .slider {
+
+        min-height: 250px;
+    }
+
+    .slider img {
+
+        height: 250px;
+
+        max-width: 100%;
+    }
+
+    .carrusel-anterior,
+    .carrusel-siguiente {
+
+        width: 42px;
+
+        height: 42px;
+
+        font-size: 18px;
+    }
+
+    .carrusel-anterior {
+        left: 8px;
+    }
+
+    .carrusel-siguiente {
+        right: 8px;
+    }
+
+}
